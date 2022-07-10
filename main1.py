@@ -5,7 +5,7 @@ from PIL import Image
 # Page Title
 ########################
 
-image=Image.Open("gold.2-1.jpg")
+image=Image.open("gold.2-1.jpg")
 
 st.image(image, use_column_width=True)
 
