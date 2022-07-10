@@ -1,3 +1,4 @@
+import altair as alt
 import streamlit as st
 from PIL import Image
 
