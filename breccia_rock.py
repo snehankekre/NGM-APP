@@ -89,10 +89,10 @@ def main():
             st.success("Saved File")
             
    #grabbing names from working directory and removing extension
-   from natsort import natsorted
-   Image_dir=os.getcwd()
-   Breccia_name= []
-   for root, dirs, files in os.walk(Image_dir):
+    from natsort import natsorted
+    Image_dir=os.getcwd()
+    Breccia_name= []
+    for root, dirs, files in os.walk(Image_dir):
         j=natsorted(files)
         for i in j:
             if i.endswith('jpg'):
@@ -112,7 +112,7 @@ def main():
         spliited.append(x)
     #print(spliited)
 
-   for j in spliited:
+    for j in spliited:
         name_=j[0]
         GeoFrom_=j[1]
         GeoTo_=j[2]
@@ -138,4 +138,6 @@ if __name__ == "__main__":
     main()
     
     
+    
+
     
