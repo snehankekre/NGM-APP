@@ -114,11 +114,11 @@ def main():
 
     for j in spliited:
         name_=j[0]
-        GeoFrom_=j[1]
-        GeoTo_=j[2]
+        #GeoFrom_=j[1]
+        #GeoTo_=j[2]
         name.append(name_)
-        GeoFrom.append(GeoFrom_)
-        GeoTo.append(GeoTo_)
+        #GeoFrom.append(GeoFrom_)
+        #GeoTo.append(GeoTo_)
              
         #predict Button        
                 
