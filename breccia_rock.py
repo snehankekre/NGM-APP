@@ -14,7 +14,7 @@ import os
 
 st.set_page_config(page_title='Breccia Classifier', page_icon = 'ngm.jpg', layout = 'wide', initial_sidebar_state = 'expanded')
 
-image = Image.open(r"C:\Users\taiwo.osunrinde\Desktop\nevadaimage.jfif")
+image = Image.open("nevadaimage.jfif")
 st.image(image, use_column_width=True)
 
 st.write("""
