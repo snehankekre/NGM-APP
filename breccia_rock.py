@@ -6,6 +6,7 @@ import io
 import pandas as pd
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
+import cv2
 import tensorflow
 import os
 ########################
@@ -56,6 +57,39 @@ def pre_process():
     return Breccia_predict_generator
 
 
+#grabbing names from working directory and removing extension
+from natsort import natsorted
+Image_dir=os.getcwd()
+Breccia_name= []
+for root, dirs, files in os.walk(Image_dir):
+    j=natsorted(files)
+    for i in j:
+        if i.endswith('jpg'):
+            Breccia_name.append(i)
+            #print(i)
+            #Breccia_name.extend(os.path.splitext(name)[0] for name in i)
+print(Breccia_name)
+      
+
+
+#Grabbing the image name and depth
+
+spliited, name, GeoFrom, GeoTo=[],[],[],[]
+for i in Breccia_name:
+# setting the maxsplit parameter to 3, will return a list with 4 elements!    
+    x = i.split("_", 3)
+    spliited.append(x)
+#print(spliited)
+
+for j in spliited:
+    name_=j[0]
+    #GeoFrom_=j[1]
+    #GeoTo_=j[2]
+    name.append(name_)
+    #GeoFrom.append(GeoFrom_)
+    #GeoTo.append(GeoTo_)
+
+
 #loading the model
 model_path=r"S:\EL NINO\Geology\03. MODELING\TAIWO\Final_code_model\Breccia_Rock_Classifier.h5"
 
@@ -88,38 +122,7 @@ def main():
                 f.write(image.getbuffer())         
             st.success("Saved File")
             
-   #grabbing names from working directory and removing extension
-    from natsort import natsorted
-    Image_dir=os.getcwd()
-    Breccia_name= []
-    for root, dirs, files in os.walk(Image_dir):
-        j=natsorted(files)
-        for i in j:
-            if i.endswith('jpg'):
-                Breccia_name.append(i)
-                #print(i)
-                #Breccia_name.extend(os.path.splitext(name)[0] for name in i)
-    print(Breccia_name)
-      
-
-
-    #Grabbing the image name and depth
-
-    spliited, name, GeoFrom, GeoTo=[],[],[],[]
-    for i in Breccia_name:
-    # setting the maxsplit parameter to 3, will return a list with 4 elements!    
-        x = i.split("_", 3)
-        spliited.append(x)
-    #print(spliited)
-
-    for j in spliited:
-        name_=j[0]
-        #GeoFrom_=j[1]
-        #GeoTo_=j[2]
-        name.append(name_)
-        #GeoFrom.append(GeoFrom_)
-        #GeoTo.append(GeoTo_)
-             
+                
         #predict Button        
                 
         if(st.button('Predict')):
@@ -138,6 +141,4 @@ if __name__ == "__main__":
     main()
     
     
-    
-
     
