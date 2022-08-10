@@ -96,7 +96,7 @@ def main():
         j=natsorted(files)
         for i in j:
             if i.endswith('jpg'):
-             Breccia_name.append(i)
+                Breccia_name.append(i)
                 #print(i)
                 #Breccia_name.extend(os.path.splitext(name)[0] for name in i)
     print(Breccia_name)
