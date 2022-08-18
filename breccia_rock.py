@@ -90,7 +90,7 @@ for j in spliited:
 
 
 #loading the model
-model_path='https://github.com/osunrinde/NGM-APP/tree/main/Extras/Breccia_Rock_Classifier.h5'
+model_path='./Extras/Breccia_Rock_Classifier.h5'
 
 
 
