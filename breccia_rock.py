@@ -98,7 +98,7 @@ model_path=r"S:\EL NINO\Geology\03. MODELING\TAIWO\Final_code_model\Breccia_Rock
 @st.cache
 def Breccia_Predictions():
     image_=pre_process()
-    model = tf.keras.models.load_model(model_path)
+    model = tensorflow.keras.models.load_model(model_path)
     prediction_steps_per_epoch = np.math.ceil(image_.n / image_.batch_size)
     image_.reset()
     Breccia_predictions = model.predict_generator(image_, steps=prediction_steps_per_epoch, verbose=1)
