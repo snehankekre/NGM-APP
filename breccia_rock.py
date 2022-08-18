@@ -102,6 +102,7 @@ def Breccia_Predictions():
     prediction_steps_per_epoch = np.math.ceil(image_.n / image_.batch_size)
     image_.reset()
     Breccia_predictions = model.predict_generator(image_, steps=prediction_steps_per_epoch, verbose=1)
+    model.close()
     predicted_classes = np.argmax(Breccia_predictions, axis=1)
     return predicted_classes
 
