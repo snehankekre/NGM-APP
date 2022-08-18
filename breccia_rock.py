@@ -90,7 +90,7 @@ for j in spliited:
 
 
 #loading the model
-model_path='./Extras/Breccia_Rock_Classifier.h5'
+#model_path='./Extras/Breccia_Rock_Classifier.h5'
 
 
 
@@ -98,7 +98,7 @@ model_path='./Extras/Breccia_Rock_Classifier.h5'
 @st.cache
 def Breccia_Predictions():
     image_=pre_process()
-    model = open(model_path, 'rb')
+    model = open('./Extras/Breccia_Rock_Classifier.h5', 'rb')
     model_=tensorflow.keras.models.load_model(model)
     prediction_steps_per_epoch = np.math.ceil(image_.n / image_.batch_size)
     image_.reset()
