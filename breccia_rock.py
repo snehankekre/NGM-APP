@@ -6,7 +6,7 @@ import io
 import pandas as pd
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
-import tensorflow
+import tensorflow 
 import os
 ########################
 # Page Title
@@ -133,7 +133,9 @@ def main():
             st.dataframe(Final_prediction1)
             
             st.success("Prediction Successful")
-            
+            for i in image_file:
+                os.remove('Breccia_Rock/'+i.name)
+
                 
         
 if __name__ == "__main__":
