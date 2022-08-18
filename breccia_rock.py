@@ -90,7 +90,7 @@ for j in spliited:
 
 
 #loading the model
-model_path=r"S:\EL NINO\Geology\03. MODELING\TAIWO\Final_code_model\Breccia_Rock_Classifier.h5"
+model_path='./Extras/Breccia_Rock.Classifier.h5'
 
 
 
