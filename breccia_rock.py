@@ -80,7 +80,7 @@ for i in Breccia_name:
     spliited.append(x)
 #print(spliited)
 
-#for j in spliited:
+for j in spliited:
     name_=j[0]
     GeoFrom_=j[1]
     GeoTo_=j[2]
@@ -128,8 +128,8 @@ def main():
         if(st.button('Predict')):
             predicted=Breccia_Predictions()
             list_predicted_classes=predicted.tolist()
-            #Final_prediction1=pd.DataFrame(data=zip(name, GeoFrom, GeoTo, list_predicted_classes),columns=['HoleID','GeoFrom', 'GeoTo','Predicted_Labels'])
-            #Final_prediction1['Predicted_Labels']= Final_prediction1['Predicted_Labels'].replace({0: '1BX', 1:'2BX', 2: '3BX', 
+            Final_prediction1=pd.DataFrame(data=zip(name, GeoFrom, GeoTo, list_predicted_classes),columns=['HoleID','GeoFrom', 'GeoTo','Predicted_Labels'])
+            Final_prediction1['Predicted_Labels']= Final_prediction1['Predicted_Labels'].replace({0: '1BX', 1:'2BX', 2: '3BX', 
                                                                                     3: 'CAVBX', 4: 'FBX', 5: 'MBX', 6: 'NBX'}).astype(str)
             st.dataframe(Final_prediction1)
             
