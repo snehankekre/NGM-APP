@@ -12,7 +12,7 @@ import os
 # Page Title
 ########################
 
-st.set_page_config(page_title='Breccia Classifier', page_icon = './Extras/ngm.jpg', layout = 'wide', initial_sidebar_state = 'expanded')
+st.set_page_config(page_title='Breccia Classifier', page_icon = './Extras/ngm.jfif', layout = 'wide', initial_sidebar_state = 'expanded')
 
 image = Image.open('./Extras/nevadaimage.jfif')
 st.image(image, use_column_width=True)
