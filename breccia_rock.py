@@ -9,6 +9,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_im
 import tensorflow 
 import os
 import subprocess
+import urllib.request
 ########################
 # Page Title
 ########################
@@ -96,11 +97,13 @@ for j in spliited:
 
 
 #predictions
-
+@st.experimental_memo
 def Breccia_Predictions():
     image_=pre_process()
     print(subprocess.run(['ls -la'], shell=True))
-    model=tensorflow.keras.models.load_model('./Breccia_Rock_Classifier.h5')
+    if not os.path.isfile('model.h5'):
+        urllib.request.urlretrieve('https://github.com/snehankekre/NGM-APP/raw/main/Breccia_Rock_Classifier.h5', 'model.h5')
+    model=tensorflow.keras.models.load_model('model.h5')
     prediction_steps_per_epoch = np.math.ceil(image_.n / image_.batch_size)
     image_.reset()
     Breccia_predictions = model.predict_generator(image_, steps=prediction_steps_per_epoch, verbose=1)
