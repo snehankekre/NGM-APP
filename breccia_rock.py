@@ -104,7 +104,6 @@ def load_model():
 
 
 #predictions
-@st.experimental_memo
 def Breccia_Predictions(model):
     image_=pre_process()
     prediction_steps_per_epoch = np.math.ceil(image_.n / image_.batch_size)
