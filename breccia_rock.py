@@ -8,6 +8,7 @@ import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 import tensorflow 
 import os
+import subprocess
 ########################
 # Page Title
 ########################
@@ -98,6 +99,7 @@ for j in spliited:
 @st.experimental_memo
 def Breccia_Predictions():
     image_=pre_process()
+    print(subprocess.check_output('ls -la', shell=True)
     model=tensorflow.keras.models.load_model('./Breccia_Rock_Classifier.h5')
     prediction_steps_per_epoch = np.math.ceil(image_.n / image_.batch_size)
     image_.reset()
