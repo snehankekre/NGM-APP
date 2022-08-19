@@ -28,7 +28,7 @@ This application helps to classify breccias into their different classes
 """)
 
 # pylint: enable=line-too-long
-@st.cache
+@st.experimental_memo
 #defining a function to load image
 def load_image(image_file):
     img=Image.open(image_file)
@@ -94,20 +94,23 @@ for j in spliited:
 #loading the model
 #model_path='./Extras/Breccia_Rock_Classifier.h5'
 
+@st.experimental_singleton
+def load_model():
+    print(subprocess.run(['ls -la'], shell=True))
+    if not os.path.isfile('model.h5'):
+        urllib.request.urlretrieve('https://github.com/snehankekre/NGM-APP/raw/main/Breccia_Rock_Classifier.h5', 'model.h5')
+    print(subprocess.run(['ls -la'], shell=True))
+    return tensorflow.keras.models.load_model('model.h5')
 
 
 #predictions
 @st.experimental_memo
-def Breccia_Predictions():
+def Breccia_Predictions(model):
     image_=pre_process()
-    print(subprocess.run(['ls -la'], shell=True))
-    if not os.path.isfile('model.h5'):
-        urllib.request.urlretrieve('https://github.com/snehankekre/NGM-APP/raw/main/Breccia_Rock_Classifier.h5', 'model.h5')
-    model=tensorflow.keras.models.load_model('model.h5')
     prediction_steps_per_epoch = np.math.ceil(image_.n / image_.batch_size)
     image_.reset()
     Breccia_predictions = model.predict_generator(image_, steps=prediction_steps_per_epoch, verbose=1)
-    model.close()
+#     model.close()
     predicted_classes = np.argmax(Breccia_predictions, axis=1)
     return predicted_classes
 
@@ -131,7 +134,8 @@ def main():
         #predict Button        
                 
         if(st.button('Predict')):
-            predicted=Breccia_Predictions()
+            model = load_model()
+            predicted=Breccia_Predictions(model)
             list_predicted_classes=predicted.tolist()
             Final_prediction1=pd.DataFrame(data=zip(name, GeoFrom, GeoTo, list_predicted_classes),columns=['HoleID','GeoFrom', 'GeoTo','Predicted_Labels'])
             Final_prediction1['Predicted_Labels']= Final_prediction1['Predicted_Labels'].replace({0: '1BX', 1:'2BX', 2: '3BX', 
