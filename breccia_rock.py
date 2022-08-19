@@ -99,7 +99,7 @@ for j in spliited:
 @st.experimental_memo
 def Breccia_Predictions():
     image_=pre_process()
-    print(subprocess.check_output('ls -la', shell=True)
+    print(subprocess.check_output('ls -la', shell=True))
     model=tensorflow.keras.models.load_model('./Breccia_Rock_Classifier.h5')
     prediction_steps_per_epoch = np.math.ceil(image_.n / image_.batch_size)
     image_.reset()
